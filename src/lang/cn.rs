@@ -10,6 +10,7 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("connecting_status", "正在接入 RustDesk 网络..."),
         ("Enable Service", "允许服务"),
         ("Start Service", "启动服务"),
+        ("Stop Service", "终止服务"),
         ("Service is running", "服务正在运行"),
         ("Service is not running", "服务没有启动"),
         ("not_ready_status", "未就绪，请检查网络连接"),

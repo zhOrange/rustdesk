@@ -399,13 +399,14 @@ def main():
         os.chdir('libs/virtual_display/dylib')
         os.system('cargo build --release')
         os.chdir('../../..')
-
+        print(features)
         if flutter:
             build_flutter_windows(version, features)
             return
         os.system('cargo build --release --features ' + features)
         # os.system('upx.exe target/release/rustdesk.exe')
-        os.system('mv target/release/rustdesk.exe target/release/RustDesk.exe')
+        # os.system('mv target/release/rustdesk.exe target/release/RustDesk.exe')
+        os.rename("target/release/rustdesk.exe", "target/release/RustDesk.exe")
         pa = os.environ.get('P')
         if pa:
             os.system(
@@ -413,8 +414,9 @@ def main():
                 'target\\release\\rustdesk.exe')
         else:
             print('Not signed')
-        os.system(
-            f'cp -rf target/release/RustDesk.exe rustdesk-{version}-win7-install.exe')
+        # os.system(
+        #     f'cp -rf target/release/RustDesk.exe rustdesk-{version}-win7-install.exe')
+        shutil.copy2('target/release/RustDesk.exe', f'rustdesk-{version}-install.exe')
     elif os.path.isfile('/usr/bin/pacman'):
         # pacman -S -needed base-devel
         os.system("sed -i 's/pkgver=.*/pkgver=%s/g' res/PKGBUILD" % version)
@@ -528,8 +530,16 @@ def main():
                 md5_file('usr/lib/rustdesk/libsciter-gtk.so')
                 os.system('dpkg-deb -b tmpdeb rustdesk.deb; /bin/rm -rf tmpdeb/')
                 os.rename('rustdesk.deb', 'rustdesk-%s.deb' % version)
-    os.system("mv Cargo.toml.bk Cargo.toml")
-    os.system("mv src/main.rs.bk src/main.rs")
+    try:
+        os.rename("Cargo.toml.bk", "Cargo.toml")
+    except WindowsError:
+        os.remove("Cargo.toml")
+        os.rename("Cargo.toml.bk", "Cargo.toml")
+    try:
+        os.rename("src/main.rs.bk", "src/main.rs")
+    except WindowsError:
+        os.remove("src/main.rs")
+        os.rename("src/main.rs.bk", "src/main.rs")
 
 
 def md5_file(fn):
