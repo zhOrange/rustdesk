@@ -19,6 +19,7 @@ var svg_menu = <svg #menu viewBox="0 0 512 512">
 	<circle cx="256" cy="448" r="64"/>
 	<circle cx="256" cy="64" r="64"/>
 </svg>;
+var svg_settings = <svg #settings t="1675867142854" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2702" width="32" height="32" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M924.8 625.7l-65.5-56c3.1-19 4.7-38.4 4.7-57.8s-1.6-38.8-4.7-57.8l65.5-56c10.1-8.6 13.8-22.6 9.3-35.2l-0.9-2.6c-18.1-50.5-44.9-96.9-79.7-137.9l-1.8-2.1c-8.6-10.1-22.5-13.9-35.1-9.5l-81.3 28.9c-30-24.6-63.5-44-99.7-57.6l-15.7-85c-2.4-13.1-12.7-23.3-25.8-25.7l-2.7-0.5c-52.1-9.4-106.9-9.4-159 0l-2.7 0.5c-13.1 2.4-23.4 12.6-25.8 25.7l-15.8 85.4c-35.9 13.6-69.2 32.9-99 57.4l-81.9-29.1c-12.5-4.4-26.5-0.7-35.1 9.5l-1.8 2.1c-34.8 41.1-61.6 87.5-79.7 137.9l-0.9 2.6c-4.5 12.5-0.8 26.5 9.3 35.2l66.3 56.6c-3.1 18.8-4.6 38-4.6 57.1 0 19.2 1.5 38.4 4.6 57.1L99 625.5c-10.1 8.6-13.8 22.6-9.3 35.2l0.9 2.6c18.1 50.4 44.9 96.9 79.7 137.9l1.8 2.1c8.6 10.1 22.5 13.9 35.1 9.5l81.9-29.1c29.8 24.5 63.1 43.9 99 57.4l15.8 85.4c2.4 13.1 12.7 23.3 25.8 25.7l2.7 0.5c26.1 4.7 52.8 7.1 79.5 7.1 26.7 0 53.5-2.4 79.5-7.1l2.7-0.5c13.1-2.4 23.4-12.6 25.8-25.7l15.7-85c36.2-13.6 69.7-32.9 99.7-57.6l81.3 28.9c12.5 4.4 26.5 0.7 35.1-9.5l1.8-2.1c34.8-41.1 61.6-87.5 79.7-137.9l0.9-2.6c4.5-12.3 0.8-26.3-9.3-35zM788.3 465.9c2.5 15.1 3.8 30.6 3.8 46.1s-1.3 31-3.8 46.1l-6.6 40.1 74.7 63.9c-11.3 26.1-25.6 50.7-42.6 73.6L721 702.8l-31.4 25.8c-23.9 19.6-50.5 35-79.3 45.8l-38.1 14.3-17.9 97c-28.1 3.2-56.8 3.2-85 0l-17.9-97.2-37.8-14.5c-28.5-10.8-55-26.2-78.7-45.7l-31.4-25.9-93.4 33.2c-17-22.9-31.2-47.6-42.6-73.6l75.5-64.5-6.5-40c-2.4-14.9-3.7-30.3-3.7-45.5 0-15.3 1.2-30.6 3.7-45.5l6.5-40-75.5-64.5c11.3-26.1 25.6-50.7 42.6-73.6l93.4 33.2 31.4-25.9c23.7-19.5 50.2-34.9 78.7-45.7l37.9-14.3 17.9-97.2c28.1-3.2 56.8-3.2 85 0l17.9 97 38.1 14.3c28.7 10.8 55.4 26.2 79.3 45.8l31.4 25.8 92.8-32.9c17 22.9 31.2 47.6 42.6 73.6L781.8 426l6.5 39.9z" p-id="2703"></path><path d="M512 326c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176z m79.2 255.2C570 602.3 541.9 614 512 614c-29.9 0-58-11.7-79.2-32.8C411.7 560 400 531.9 400 502c0-29.9 11.7-58 32.8-79.2C454 401.6 482.1 390 512 390c29.9 0 58 11.6 79.2 32.8C612.3 444 624 472.1 624 502c0 29.9-11.7 58-32.8 79.2z" p-id="2704"></path></svg>
 var svg_refresh_password = <svg #refresh-password xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .57-8.38"/></svg>;
 
 var my_id = "";
@@ -283,7 +284,7 @@ class MyIdMenu: Reactor.Component {
     function render() {
         return <div #myid>
             {this.renderPop()}
-            ID{svg_menu}
+            ID
         </div>;
     }
 
@@ -531,6 +532,229 @@ function editDirectAccessPort() {
       });
 }
 
+var myAppSettings;
+class MyAppSettings: Reactor.Component {
+    function this() {
+        myAppSettings = this;
+    }
+
+    function render() {
+        return <div #mysettings>
+            {this.renderPop()}
+            {svg_settings}
+        </div>;
+    }
+
+    function renderPop() {
+        var username = handler.get_local_option("access_token") ? getUserName() : '';
+        return <popup>
+            <menu.context #config-options>
+                <li #enable-keyboard><span>{svg_checkmark}</span>{translate('Enable Keyboard/Mouse')}</li>
+                <li #enable-clipboard><span>{svg_checkmark}</span>{translate('Enable Clipboard')}</li>
+                <li #enable-file-transfer><span>{svg_checkmark}</span>{translate('Enable File Transfer')}</li> 
+                <li #enable-remote-restart><span>{svg_checkmark}</span>{translate('Enable Remote Restart')}</li> 
+                <li #enable-tunnel><span>{svg_checkmark}</span>{translate('Enable TCP Tunneling')}</li>
+                <li #enable-lan-discovery><span>{svg_checkmark}</span>{translate('Enable LAN Discovery')}</li>
+                <AudioInputs />
+                <Enhancements />
+                <li #allow-remote-config-modification><span>{svg_checkmark}</span>{translate('Enable remote configuration modification')}</li>
+                <div .separator />
+                <li #custom-server>{translate('ID/Relay Server')}</li>
+                <li #whitelist title={translate('whitelist_tip')}>{translate('IP Whitelisting')}</li>
+                <li #socks5-server>{translate('Socks5 Proxy')}</li>
+                <div .separator />
+                <li #stop-service class={service_stopped ? "line-through" : "selected"}><span>{svg_checkmark}</span>{translate("Enable Service")}</li>
+                {handler.is_rdp_service_open() ? <ShareRdp /> : ""}
+                <DirectServer />
+                {false && handler.using_public_server() && <li #allow-always-relay><span>{svg_checkmark}</span>{translate('Always connected via relay')}</li>}
+                {handler.is_ok_change_id() ? <div .separator /> : ""}
+                {username ? 
+                <li #logout>{translate('Logout')} ({username})</li> :
+                <li #login>{translate('Login')}</li>}
+                {handler.is_ok_change_id() && key_confirmed ? <li #change-id>{translate('Change ID')}</li> : ""}
+                <div .separator />
+                <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
+                <Languages />
+                <li #about>{translate('About')} {" "}{handler.get_app_name()}</li>
+            </menu>
+        </popup>;
+    }
+
+    event click $(svg#settings) (_, me) {
+        this.showSettingMenu();
+    }
+
+    function showSettingMenu() {
+        audioInputMenu.update({ show: true });
+        this.toggleMenuState();
+        if (direct_server) direct_server.update();
+        var menu = this.$(menu#config-options);
+        this.$(svg#settings).popup(menu);
+    }
+
+    event click $(li#login) () {
+        login();
+    }
+
+    event click $(li#logout) () {
+        logout();
+    }
+
+    function toggleMenuState() {
+        for (var el in $$(menu#config-options>li)) {
+            if (el.id && el.id.indexOf("enable-") == 0) {
+                var enabled = handler.get_option(el.id) != "N";
+                el.attributes.toggleClass("selected", enabled);
+                el.attributes.toggleClass("line-through", !enabled);
+            }
+            if (el.id && el.id.indexOf("allow-") == 0) {
+                var enabled = handler.get_option(el.id) == "Y";
+                el.attributes.toggleClass("selected", enabled);
+                el.attributes.toggleClass("line-through", !enabled);
+            }
+        }
+    }
+
+    function showAbout() {
+        var name = handler.get_app_name();
+        msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + name, "<div style='line-height: 2em'> \
+            <div>Version: " + handler.get_version() + " \
+            <div .link .custom-event url='https://rustdesk.com/privacy'>Privacy Statement</div> \
+            <div .link .custom-event url='https://rustdesk.com'>Website</div> \
+            <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; 2022 Purslane Ltd.\
+            <br />" + handler.get_license() + " \
+            <p style='font-weight: bold'>Made with heart in this chaotic world!</p>\
+            </div>\
+        </div>", "", function(el) {
+            if (el && el.attributes) {
+                handler.open_url(el.attributes['url']);
+            };
+        }, 400);
+    }
+
+    event click $(menu#config-options>li) (_, me) {
+        if (me.id && me.id.indexOf("enable-") == 0) {
+            handler.set_option(me.id, handler.get_option(me.id) == "N" ? "" : "N");
+        }
+        if (me.id && me.id.indexOf("allow-") == 0) {
+            handler.set_option(me.id, handler.get_option(me.id) == "Y" ? "" : "Y");
+        }
+        if (me.id == "whitelist") {
+            var old_value = handler.get_option("whitelist").split(",").join("\n");
+            msgbox("custom-whitelist", translate("IP Whitelisting"), "<div .form> \
+            <div>" + translate("whitelist_sep") + "</div> \
+            <textarea .outline-focus spellcheck=\"false\" name=\"text\" novalue=\"0.0.0.0\" style=\"overflow: scroll-indicator; width:*; height: 140px; font-size: 1.2em; padding: 0.5em;\">" + old_value + "</textarea>\
+            </div> \
+            ", "", function(res=null) {
+                if (!res) return;
+                var value = (res.text || "").trim();
+                if (value) {
+                    var values = value.split(/[\s,;\n]+/g);
+                    for (var ip in values) {
+                        if (!ip.match(/^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]?|0)(\/([1-9]|[1-2][0-9]|3[0-2])){0,1}$/)
+                            && !ip.match(/^(((?:[0-9A-Fa-f]{1,4}))*((?::[0-9A-Fa-f]{1,4}))*::((?:[0-9A-Fa-f]{1,4}))*((?::[0-9A-Fa-f]{1,4}))*|((?:[0-9A-Fa-f]{1,4}))((?::[0-9A-Fa-f]{1,4})){7})(\/([1-9]|[1-9][0-9]|1[0-1][0-9]|12[0-8])){0,1}$/)) {
+                            return translate("Invalid IP") + ": " + ip;
+                        }
+                    }
+                    value = values.join("\n");
+                }
+                if (value == old_value) return;
+                stdout.println("whitelist updated");
+                handler.set_option("whitelist", value.replace("\n", ","));
+            }, 300);
+        } else if (me.id == "custom-server") {
+            var configOptions = handler.get_options();
+            var old_relay = configOptions["relay-server"] || "";
+            var old_api = configOptions["api-server"] || "";
+            var old_id = configOptions["custom-rendezvous-server"] || "";
+            var old_key = configOptions["key"] || "";
+            msgbox("custom-server", "ID/Relay Server", "<div .form .set-password> \
+            <div><span>" + translate("ID Server") + ": </span><input|text .outline-focus name='id' value='" + old_id + "' /></div> \
+            <div><span>" + translate("Relay Server") + ": </span><input|text name='relay' value='" + old_relay + "' /></div> \
+            <div><span>" + translate("API Server") + ": </span><input|text name='api' value='" + old_api + "' /></div> \
+            <div><span>" + translate("Key") + ": </span><input|text name='key' value='" + old_key + "' /></div> \
+            </div> \
+            ", "", function(res=null) {
+                if (!res) return;
+                var id = (res.id || "").trim();
+                var relay = (res.relay || "").trim();
+                var api = (res.api || "").trim().toLowerCase();
+                var key = (res.key || "").trim();
+                if (id == old_id && relay == old_relay && key == old_key && api == old_api) return;
+                if (id) {
+                    var err = handler.test_if_valid_server(id);
+                    if (err) return translate("ID Server") + ": " + err;
+                }
+                if (relay) {
+                    var err = handler.test_if_valid_server(relay);
+                    if (err) return translate("Relay Server") + ": " + err;
+                }
+                if (api) {
+                    if (0 != api.indexOf("https://") && 0 != api.indexOf("http://")) {
+                        return  translate("API Server") + ": " + translate("invalid_http");
+                    }
+                }
+                configOptions["custom-rendezvous-server"] = id;
+                configOptions["relay-server"] = relay;
+                configOptions["api-server"] = api;
+                configOptions["key"] = key;
+                handler.set_options(configOptions);
+            }, 260);
+        } else if (me.id == "socks5-server") {
+            var socks5 = handler.get_socks() || {};
+            var old_proxy = socks5[0] || "";
+            var old_username = socks5[1] || "";
+            var old_password = socks5[2] || "";
+            msgbox("custom-server", "Socks5 Proxy", <div .form .set-password> 
+            <div><span>{translate("Hostname")}:</span><input|text .outline-focus name='proxy' value={old_proxy} /></div>
+            <div><span>{translate("Username")}:</span><input|text name='username' value={old_username} /></div>
+            <div><span>{translate("Password")}:</span><PasswordComponent value={old_password} /></div>
+            </div>
+            , "", function(res=null) {
+                if (!res) return;
+                var proxy = (res.proxy || "").trim();
+                var username = (res.username || "").trim();
+                var password = (res.password || "").trim();
+                if (proxy == old_proxy && username == old_username && password == old_password) return;
+                if (proxy) {
+                    var err = handler.test_if_valid_server(proxy);
+                    if (err) return translate("Server") + ": " + err;
+                }
+                handler.set_socks(proxy, username, password);
+            }, 240);
+        } else if (me.id == "stop-service") {
+            handler.set_option("stop-service", service_stopped ? "" : "Y");
+        } else if (me.id == "change-id") {
+            msgbox("custom-id", translate("Change ID"), "<div .form .set-password> \
+            <div>" + translate('id_change_tip') + " </div> \
+            <div><span style='width: 100px; display:inline-block'>ID: </span><input|text .outline-focus style='width: 250px' name='id' /></div> \
+            </div> \
+            ", "", function(res=null, show_progress) {
+                if (!res) return;
+                show_progress();
+                var id = (res.id || "").trim();
+                if (!id) return;
+                if (id == my_id) return;
+                handler.change_id(id);
+                function check_status() {
+                    var status = handler.get_async_job_status();
+                    if (status == " ") self.timer(0.1s, check_status);
+                    else {
+                        if (status) show_progress(false, translate(status));
+                        else show_progress(-1);
+                    }
+                }
+                check_status();
+                return " ";
+            });
+        } else if (me.id == "allow-darktheme") {
+            updateTheme();
+        } else if (me.id == "about") {
+            this.showAbout()
+        }
+    }
+}
+
 class App: Reactor.Component
 {
     function this() {
@@ -560,6 +784,7 @@ class App: Reactor.Component
                     {system_error ? <SystemError /> : ""}
                     {!system_error && handler.is_login_wayland() && !handler.current_is_wayland() ? <FixWayland /> : ""}
                     {!system_error && handler.current_is_wayland() ? <ModifyDefaultLogin /> : ""}
+                    <MyAppSettings />
                 </div>
                 <div .right-pane>
                     <div .right-content>

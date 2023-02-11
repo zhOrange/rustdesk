@@ -381,6 +381,16 @@ div#myid svg#menu, div#tags-label svg#menu {
     right: -1em;
 }
 
+div#mysettings{
+    position: absolute;
+    bottom: 0em;
+}
+
+div#mysettings svg#menu{
+    position: absolute;
+    right: -1em;
+}
+
 div#tags-label svg#menu:hover {
     background-color: #ddd;
 }

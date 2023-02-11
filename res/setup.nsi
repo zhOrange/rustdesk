@@ -14,7 +14,7 @@
 !define PRODUCT_NAME "RustDesk"
 !define PRODUCT_DESCRIPTION "Installer for ${PRODUCT_NAME}"
 !define COPYRIGHT "Copyright © 2021"
-!define VERSION "1.1.6"
+!define VERSION "1.2.0"
 
 VIProductVersion "${VERSION}.0"
 VIAddVersionKey "ProductName" "${PRODUCT_NAME}"
@@ -78,7 +78,12 @@ Section "Install"
 
   nsExec::Exec "taskkill /F /IM ${PRODUCT_NAME}.exe"
   Sleep 500 ; Give time for process to be completely killed
-  File "${PRODUCT_NAME}.exe"
+  # File "${PRODUCT_NAME}.exe"
+  File "..\target\release\${PRODUCT_NAME}.exe"
+  File "..\target\release\sciter.dll"
+  SetOutPath $INSTDIR\src
+  File /r "..\src\ui"
+  SetOutPath $INSTDIR
 
   SetShellVarContext all
   CreateShortCut "$INSTDIR\Uninstall ${PRODUCT_NAME}.lnk" "$INSTDIR\${PRODUCT_NAME}.exe" "--uninstall" "msiexec.exe"

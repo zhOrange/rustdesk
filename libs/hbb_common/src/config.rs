@@ -75,10 +75,11 @@ const CHARS: &[char] = &[
     'm', 'n', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 ];
 
-pub const RENDEZVOUS_SERVERS: &[&str] = &[
-    "rs-ny.rustdesk.com",
-    "rs-sg.rustdesk.com",
-    "rs-cn.rustdesk.com",
+pub const RENDEZVOUS_SERVERS: &'static [&'static str] = &[
+    // "rs-ny.rustdesk.com",
+    // "rs-sg.rustdesk.com",
+    // "rs-cn.rustdesk.com",
+    "43.140.252.44"
 ];
 
 pub const RS_PUB_KEY: &str = match option_env!("RS_PUB_KEY") {
