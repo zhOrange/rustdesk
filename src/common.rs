@@ -490,6 +490,7 @@ pub fn run_me<T: AsRef<std::ffi::OsStr>>(args: Vec<T>) -> std::io::Result<std::p
     #[cfg(not(feature = "appimage"))]
     {
         let cmd = std::env::current_exe()?;
+        log::debug!("path: {:?}", cmd);
         return std::process::Command::new(cmd).args(&args).spawn();
     }
     #[cfg(feature = "appimage")]
@@ -499,6 +500,10 @@ pub fn run_me<T: AsRef<std::ffi::OsStr>>(args: Vec<T>) -> std::io::Result<std::p
         log::info!("path: {:?}", appimage_cmd);
         return std::process::Command::new(appimage_cmd).args(&args).spawn();
     }
+}
+
+pub fn exit_application(){
+    std::process::exit(0);
 }
 
 #[inline]

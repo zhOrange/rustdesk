@@ -16,17 +16,19 @@ enum Events {
     DoubleClickTrayIcon,
     StopService,
     StartService,
+    ExitApplication,
 }
 
 #[cfg(target_os = "windows")]
 pub fn start_tray() {
+    let app_name = &crate::get_app_name();
     let event_loop = EventLoop::<Events>::with_user_event();
     let proxy = event_loop.create_proxy();
     let icon = include_bytes!("../res/tray-icon.ico");
     let mut tray_icon = TrayIconBuilder::new()
         .sender_winit(proxy)
         .icon_from_buffer(icon)
-        .tooltip("RustDesk")
+        .tooltip(app_name)
         .on_double_click(Events::DoubleClickTrayIcon)
         .build()
         .unwrap();
@@ -45,6 +47,7 @@ pub fn start_tray() {
         if state != old {
             hbb_common::log::info!("State changed");
             let mut m = MenuBuilder::new();
+            // m=m.item("EXIT", Events::ExitApplication,);
             if state == 2 {
                 m = m.item(
                     &crate::client::translate("Start Service".to_owned()),
@@ -70,6 +73,10 @@ pub fn start_tray() {
                 }
                 Events::StartService => {
                     crate::ipc::set_option("stop-service", "");
+                }
+                Events::ExitApplication =>{
+                    crate::ipc::set_option("stop-service", "Y");
+                    crate::exit_application()
                 }
             },
             _ => (),
