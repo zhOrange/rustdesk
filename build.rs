@@ -88,7 +88,7 @@ fn gen_flutter_rust_bridge() {
     use lib_flutter_rust_bridge_codegen::{
         config_parse, frb_codegen, get_symbols_if_no_duplicates, RawOpts,
     };
-    let llvm_path = match std::env::var("LLVM_HOME") {
+    let llvm_path = match std::env::var("LIBCLANG_PATH") {
         Ok(path) => Some(vec![path]),
         Err(_) => None,
     };
